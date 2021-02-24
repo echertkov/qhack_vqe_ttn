@@ -46,6 +46,6 @@ where the CNOTs represent arbitrary unitary parameterizations (disentanglers or 
 ```
 
 ## Hardware Efficient Ansatz
-```
-picture
-```
+Our Ansatz is based off of the BasicEntanglerLayer template in pennylane:
+https://pennylane.readthedocs.io/en/stable/code/api/pennylane.templates.layers.BasicEntanglerLayers.html
+
