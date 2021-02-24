@@ -23,8 +23,8 @@ In particular, we use the variational quantum eigensolver (VQE) to find the grou
 
 At 8 qubits, we successfully train a MERA tensor network, such that we can even use observables to spot the phase transition   
 
-<img src="https://github.com/echertkov/qhack_hookedonphotonics/raw/readme_change/images/observables.png" width="550px" />  
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/observables.png" width="550px" />  
 
 We also notice that when searching for barren plateaus, the TTN and MERA do not suffer, as compared with a HEA with linear depth   
 
-<img src="https://github.com/echertkov/qhack_hookedonphotonics/raw/readme_change/images/avgvar_vs_N_h_1.0.png" width="550px" />   
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/avgvar_vs_N_h_1.0.png" width="550px" />   
