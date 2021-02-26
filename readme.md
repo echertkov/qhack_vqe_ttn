@@ -19,11 +19,11 @@ One of the most promising applications of variational quantum algorithms is the 
 In particular, we use the variational quantum eigensolver (VQE) to find the ground states of the transverse field Ising model, a spin chain whose ground state is known to undergo a quantum phase transition. To avoid the barren plateau phenomenon in our analysis of this model, we train variational circuits with physically relevant structure, such as tree tensor networks (TTN) and the multi-scale entanglement renormalization ansatz (MERA). The MERA, a tensor network used to study quantum critical systems, is particularly well-suited to our task. We show that for our problem TTN’s and MERA’s generally produce larger gradients than a hardware-efficient ansatz (HEA) typically used in VQE and thereby are easier to train and help alleviate barren plateaus.
 
 
-### Preliminary Data
+### Data
 
-At 8 qubits, we successfully train a MERA tensor network, such that we can even use observables to spot the phase transition   
+At 10 qubits, we successfully train a TTN and MERA tensor network, such that we can even use observables to spot the phase transition on both classical and quantum hardware
 
-<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/observables.png" width="550px" />  
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/transition.png" width="550px" />  
 
 We also notice that when searching for barren plateaus, the TTN and MERA do not suffer, as compared with a HEA with linear depth   
 
