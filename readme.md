@@ -23,7 +23,7 @@ In particular, we use the variational quantum eigensolver (VQE) to find the grou
 
 At 10 qubits, we successfully train a TTN and MERA tensor network, such that we can even use observables to spot the phase transition on both classical and quantum hardware
 
-<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/transition.png" width="550px" />  
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/transition.png" />  
 
 We also notice that when searching for barren plateaus, the TTN and MERA do not suffer, as compared with a HEA with linear depth   
 
