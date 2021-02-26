@@ -12,7 +12,7 @@
 ---
 
 👉Links:  [Presentation](https://docs.google.com/presentation/d/1LVuJPog0zjqgti-RxUhz_KTHlVRE9mvsXhADUpUo7Tc/edit?usp=sharing) | [ansatze.md](ansatze.md)  
-📓Notebooks: [Ansatze.ipynb](Ansatze.ipynb) | [VQE.ipynb](VQE.ipynb)
+📓Notebooks: [Ansatze.ipynb](src/Ansatze.ipynb) | [VQE.ipynb](src/VQE.ipynb) | [barren_plateau.ipynb](src/barren_plateau.ipynb)
 
 ### Project Description:
 
