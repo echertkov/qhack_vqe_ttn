@@ -11,6 +11,9 @@
 ````
 ---
 
+👉Links:  [Presentation](https://docs.google.com/presentation/d/1LVuJPog0zjqgti-RxUhz_KTHlVRE9mvsXhADUpUo7Tc/edit?usp=sharing) | [ansatze.md](ansatze.md)  
+📓Notebooks: [Ansatze.ipynb](Ansatze.ipynb) | [VQE.ipynb](VQE.ipynb)
+
 ### Project Description:
 
 
