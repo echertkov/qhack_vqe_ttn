@@ -1,8 +1,12 @@
 # Ansätze
 ---
-We use the following ansätze in our work
+
+In the spirit of an [Architecture.md](https://matklad.github.io/2021/02/06/ARCHITECTURE.md.html) we present this document to explain the variational circuit ansätze in our work.
 
 ## Multi-Scale Entanglement Renormalization Ansatz (MERA)
+
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/mera.jpg" width="550px" />
+
 ```
   0: ──╭C──╭C──────╭C──────╭C──────┤
   1: ──│───│───────│───────╰X──╭C──┤
@@ -24,6 +28,9 @@ We use the following ansätze in our work
 where the CNOTs represent arbitrary unitary parameterizations (disentanglers or isometries)
 
 ## Tree Tensor Network
+
+<img src="https://github.com/echertkov/qhack_vqe_ttn/raw/main/images/ttn.jpg" width="550px" />
+
 ```
   0: ──╭C──╭C──╭C──╭C──┤ 
   1: ──│───│───│───╰X──┤     
