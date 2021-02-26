@@ -2,11 +2,11 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--N",          help="# qubits",type=int)
 parser.add_argument("--h",          help="h",type=float)
-parser.add_argument("--ansatz",     help="Which ansatz (ttn,mera,hea)")
+parser.add_argument("--ansatz",     help="Which ansatz (ttn,mera,hea,healog,healin)")
 parser.add_argument("--opt",        help="Which otimizer (qng,adagrad,adam)")
 parser.add_argument("--step",       help="Optimizer step size(0.05)",type=float,default=0.05)
 parser.add_argument("--initState",  help="Which initial state (0/+)", default="0")
-parser.add_argument("--randomize",  help="Randomize initial params?", type=int,default=1)
+parser.add_argument("--randomize",  help="Randomize initial params?(2=continue)", type=int,default=1)
 parser.add_argument("--two_qubit",  help="Which two qubit gate (two_qubit,arbitrary,simple6,simple2)")
 parser.add_argument("--periodic",   help="Is the mera periodic?",type=int,default=False)
 parser.add_argument("--fix_layers", help="Is the mera have fixed_layers?",type=int,default=True)
@@ -32,7 +32,7 @@ dev = qml.device('default.qubit', wires=num_qubits)
 
 # The TFI model at the critical point.
 h = float(args.h)
-H = tfi_chain(num_qubits, h)
+H = tfi_chain(num_qubits, h, periodic=args.periodic)
 print(H)
 
 if args.two_qubit == "two_qubit":
@@ -71,6 +71,14 @@ elif args.ansatz == "hea":
     hea_depth   = 3
     num_params  = (num_qubits * hea_depth - 1)*3
     base_ansatz = hea_circuit(num_qubits,two_qubit_gate)
+elif args.ansatz == "healog":
+    hea_depth   = 3
+    num_params  = 3 * (num_qubits * int(np.floor(np.log2(num_qubits))))
+    base_ansatz = hea_circuit(num_qubits,two_qubit_gate)
+elif args.ansatz == "healin":
+    hea_depth   = 3
+    num_params  = 3 * (num_qubits * num_qubits)
+    base_ansatz = hea_circuit(num_qubits,two_qubit_gate)
 else:
     raise NotImplementedError("Not implemented yet")
 
@@ -93,15 +101,6 @@ cost_fn = qml.ExpvalCost(ansatz, H, dev, optimize=True)
 
 print(f"Total # of Parameters={num_params}")
 
-# Initialize the parameters.
-np.random.seed(1)
-if args.randomize:
-    params = np.pi*(np.random.rand(num_params) - 1.0)
-else:
-    params = np.zeros([num_params])
-
-if args.ansatz == 'hea': params = np.reshape(params, (len(params)//3, 3))
-
 # Perform VQE.
 step_size = args.step
 if args.opt == "qng":
@@ -112,6 +111,19 @@ elif args.opt=="adam":
     opt = qml.AdamOptimizer(stepsize=step_size)
 else:
   raise NotImplementedError("Optimizer not found")
+# Initialize the parameters.
+np.random.seed(1)
+if args.randomize==1:
+    params = np.pi*(np.random.rand(num_params) - 1.0)
+elif args.randomize==2:
+    params = np.loadtxt(f"params_{args.ansatz}_{args.two_qubit}_{num_qubits}_{h}_{args.opt}_{step_size}_{initState}{1}.txt")
+    print(len(params),num_params)
+    assert len(params)==num_params
+else:
+    params = np.zeros([num_params])
+
+if args.ansatz[:3] == 'hea': params = np.reshape(params, (len(params)//3, 3))
+
 
 # Optimizer parameters.
 rtol    = args.rtol
